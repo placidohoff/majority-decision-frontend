@@ -11,7 +11,12 @@ const navItems = [
   { label: "Community", href: "/community" },
 ];
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  /** Account control (log in link or user avatar), rendered by the server. */
+  account?: React.ReactNode;
+};
+
+export function SiteHeader({ account }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -55,6 +60,7 @@ export function SiteHeader() {
           >
             <Bell aria-hidden className="size-4" />
           </button>
+          {account}
           <ButtonLink href="/scorecards/new" className="hidden sm:inline-flex">
             <Plus aria-hidden className="size-4" />
             Score a fight

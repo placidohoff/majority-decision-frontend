@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:api": "dotnet watch --project ../majority-decision-backend/MajorityDecision.Api.csproj --non-interactive run --launch-profile http",
+    "dev:all": "concurrently --kill-others --names web,api --prefix-colors red,blue \"npm:dev\" \"npm:dev:api\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -19,6 +21,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^9.2.5",
     "eslint": "^9",
     "eslint-config-next": "16.4.4",
     "tailwindcss": "^4",
